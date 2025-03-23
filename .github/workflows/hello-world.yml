@@ -1,0 +1,14 @@
+name: Hello CI-CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello-world-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print a Message
+        run: echo "Hello World"
