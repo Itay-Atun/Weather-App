@@ -10,8 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Enabling Debug
-        run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
-
       - name: Print a Message
          run: echo "Hello World"
