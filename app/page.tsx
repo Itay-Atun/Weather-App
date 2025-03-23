@@ -1,7 +1,4 @@
 import MyForm from "@/components/MyForm";
-import { Card, CardHeader } from "@/components/ui/card";
-import WeatherData from "@/components/WeatherData";
-import { CalendarDays } from "lucide-react";
 
 export default function Page() {
   return (

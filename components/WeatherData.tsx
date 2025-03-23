@@ -1,7 +1,24 @@
 "use client";
+
 import { Card, CardContent, CardHeader } from "./ui/card";
 
-export default function WeatherData({ weatherData }: object) {
+interface WeatherDataProps {
+  weatherData: {
+    name: string;
+    main: {
+      temp: number;
+      humidity: number;
+    };
+    weather: {
+      main: string;
+    }[];
+    wind: {
+      speed: number;
+    };
+  };
+}
+
+export default function WeatherData({ weatherData }: WeatherDataProps) {
   return (
     <Card className="w-full max-w-md mx-auto mt-5">
       <CardHeader className="text-center text-xl font-bold">

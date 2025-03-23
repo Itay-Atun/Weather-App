@@ -1,7 +1,7 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { any, unknown, z } from "zod";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import fetchWeather from "@/util/fetchWeather";
-import { Card, CardContent, CardHeader } from "./ui/card";
+
 import WeatherData from "./WeatherData";
-import { use, useState } from "react";
+import { useState } from "react";
 import { LoaderIcon } from "lucide-react";
 
 const formSchema = z.object({
@@ -88,7 +88,9 @@ export default function MyForm() {
 
       {error && <p className="text-red-500 text-center">{error}</p>}
 
-      {showCard ? <WeatherData weatherData={cityWeatherData} /> : <></>}
+      {showCard && cityWeatherData ? (
+        <WeatherData weatherData={cityWeatherData} />
+      ) : null}
     </Form>
   );
 }
