@@ -6,12 +6,28 @@ on:
       - main
 
 jobs:
-  hello-world-job:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Enabling Debug
-        run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Print a Message
-        run: echo "Hello World"
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 23
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run the App
+        run: npm start
