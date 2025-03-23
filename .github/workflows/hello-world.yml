@@ -12,3 +12,6 @@ jobs:
     steps:
       - name: Print a Message
         run: echo "Hello World"
+
+      - name: Enabling Debug
+        run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
